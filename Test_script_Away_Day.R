@@ -57,5 +57,7 @@ Parentalmodel <- glm(cbind(ep_offspring,wp_offspring) ~
 
 summary(Parentalmodel)
 
+print("Boycott HP") # also my tooth hurts
+
 save.image("Test_away_day.RData")
   
