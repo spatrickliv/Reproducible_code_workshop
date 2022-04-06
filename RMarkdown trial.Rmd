@@ -1,0 +1,45 @@
+---
+title: "RMarkdown trial"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. 
+
+```{r chunk 1, echo = FALSE, warning = FALSE, message = FALSE}
+library(palmerpenguins)
+library(ggplot2)
+data("penguins")
+penguins <- penguins 
+str(penguins)
+
+table(penguins$sex, penguins$species, useNA = "always")
+# look at include echo or results or warning to find out more functions # 
+```
+
+```{r penguin plot, echo=FALSE, warning = FALSE, message=FALSE, fig.cap= "Hello I am a figure caption"}
+
+
+ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g, group = species, 
+                            colour = species)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  theme_bw()
+
+```
+
+```{r penguin model, echo=FALSE, warning = FALSE, message=FALSE, fig.cap= "Hello I am a figure caption"}
+hist(penguins$body_mass_g)
+model1 <- lm(body_mass_g ~ flipper_length_mm * species, data = penguins)
+
+summary(model1)
+```
+
+
